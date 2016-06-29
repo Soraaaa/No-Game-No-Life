@@ -1,17 +1,21 @@
-using EloBuddy;
-using EloBuddy.SDK;
-using EloBuddy.SDK.Events;
-using EloBuddy.SDK.Menu;
-using EloBuddy.SDK.Menu.Values;
-using EloBuddy.SDK.Rendering;
-using EloBuddy.SDK.Enumerations;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    using EloBuddy;
+    using EloBuddy.SDK;
+    using EloBuddy.SDK.Enumerations;
+    using EloBuddy.SDK.Events;
+    using EloBuddy.SDK.Menu;
+    using EloBuddy.SDK.Menu.Values;
+    using EloBuddy.SDK.Rendering;
+    using SharpDX;
 
 namespace BrianSharp.Evade
 {
     public class SpellData
     {
-        #region Fields
-
         public bool AddHitbox = false;
 
         public bool CanBeRemoved = false;
@@ -92,10 +96,6 @@ namespace BrianSharp.Evade
 
         public SkillShotType Type;
 
-        #endregion
-
-        #region Public Properties
-
         public string MenuItemName
         {
             get
@@ -134,8 +134,6 @@ namespace BrianSharp.Evade
 
         public int RawRadius { get; private set; }
 
-        public int RawRange { get; private set; }
-
-        #endregion
+        public int RawRange { get; private set; } 
     }
 }
