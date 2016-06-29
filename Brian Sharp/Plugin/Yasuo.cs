@@ -164,7 +164,7 @@ namespace BrianSharp.Plugin
                 return Player.HasBuff("YasuoQ3W");
             }
         }
- 
+
         #endregion
 
         #region Methods
@@ -513,6 +513,13 @@ namespace BrianSharp.Plugin
                 }
                 dmg += dmgBotrk;
             }
+            if (target.IsValid<Obj_AI_Hero>())
+            {
+                var hero = (Obj_AI_Hero)target;
+                if (Items.HasItem(3047, hero))
+                {
+                    k *= 0.9d;
+                }
                 if (hero.ChampionName == "Fizz")
                 {
                     reduction += hero.Level > 15
@@ -650,40 +657,6 @@ namespace BrianSharp.Plugin
             }
         }
 
-            if (E.IsReady() && Q.IsReady(50))
-            {
-                if (E.IsInRange(unit) && CanCastE(unit) && unit.Distance(PosAfterE(unit)) < QCirWidthMin
-                    && E.CastOnUnit(unit, PacketCast))
-                {
-                    return;
-                }
-                if (E.IsInRange(unit, E.Range + QCirWidthMin))
-                {
-                    var obj = GetNearObj(unit, true);
-                    if (obj != null && E.CastOnUnit(obj, PacketCast))
-                    {
-                        return;
-                    }
-                }
-            }
-            if (!Q.IsReady())
-            {
-                return;
-            }
-            if (Player.IsDashing())
-            {
-                var pos = Player.GetDashInfo().EndPos;
-                if (Player.Distance(pos) < 150 && unit.Distance(pos) < QCirWidth)
-                {
-                    CastQCir(unit);
-                }
-            }
-            else
-            {
-                Q2.Cast(unit, PacketCast);
-            }
-        }
-
         private static void OnUpdate(EventArgs args)
         {
             if (!Equals(Q.Delay, GetQDelay))
@@ -753,6 +726,12 @@ namespace BrianSharp.Plugin
                     Q.CastIfHitchanceEquals(obj, HitChance.Medium, PacketCast);
                 }
             }
+        }
+
+        private static float TimeLeftR(Obj_AI_Hero target)
+        {
+            var buff = target.Buffs.FirstOrDefault(i => i.Type == BuffType.Knockback || i.Type == BuffType.Knockup);
+            return buff != null ? buff.EndTime - Game.Time : -1;
         }
 
         private static bool UnderTower(Vector3 pos)
@@ -1502,6 +1481,17 @@ namespace BrianSharp.Plugin
                     return;
                 }
                 var missile = (MissileClient)sender;
+                if (!missile.SpellCaster.IsValid<Obj_AI_Hero>() || missile.SpellCaster.Team == Player.Team)
+                {
+                    return;
+                }
+                var unit = (Obj_AI_Hero)missile.SpellCaster;
+                var spellData =
+                    Spells.FirstOrDefault(
+                        i =>
+                        i.SpellNames.Contains(missile.SData.Name.ToLower())
+                        && GetItem("ET_" + i.ChampionName, i.MissileName) != null
+                        && GetValue<bool>("ET_" + i.ChampionName, i.MissileName));
                 if (spellData == null && missile.SData.IsAutoAttack()
                     && (!missile.SData.Name.ToLower().Contains("crit")
                             ? GetValue<bool>("EvadeTarget", "BAttack")
@@ -1526,6 +1516,11 @@ namespace BrianSharp.Plugin
                     return;
                 }
                 var missile = (MissileClient)sender;
+                if (missile.SpellCaster.IsValid<Obj_AI_Hero>() && missile.SpellCaster.Team != Player.Team)
+                {
+                    DetectedTargets.RemoveAll(i => i.Obj.NetworkId == missile.NetworkId);
+                }
+            }
 
             private static void OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
             {
