@@ -14,8 +14,6 @@ namespace BrianSharp.Common
 {
     internal class Orbwalker
     {
-        #region Static Fields
-
         private static Menu config;
 
         private static bool disableNextAttack, missileLaunched;
@@ -28,9 +26,7 @@ namespace BrianSharp.Common
 
         private static readonly Random Random = new Random(DateTime.Now.Millisecond);
 
-        #endregion
-
-        #region Delegates
+        public delegate Menu config;
 
         public delegate void AfterAttackEvenH(AttackableUnit target);
 
@@ -42,10 +38,6 @@ namespace BrianSharp.Common
 
         public delegate void OnTargetChangeH(AttackableUnit oldTarget, AttackableUnit newTarget);
 
-        #endregion
-
-        #region Public Events
-
         public static event AfterAttackEvenH AfterAttack;
 
         public static event BeforeAttackEvenH BeforeAttack;
@@ -55,10 +47,6 @@ namespace BrianSharp.Common
         public static event OnNonKillableMinionH OnNonKillableMinion;
 
         public static event OnTargetChangeH OnTargetChange;
-
-        #endregion
-
-        #region Enums
 
         public enum Mode
         {
@@ -74,11 +62,6 @@ namespace BrianSharp.Common
 
             None
         }
-
-        #endregion
-
-        #region Public Properties
-
         public static bool Attack { get; set; }
 
         public static bool CanAttack
@@ -221,10 +204,6 @@ namespace BrianSharp.Common
 
         public static bool Move { get; set; }
 
-        #endregion
-
-        #region Properties
-
         private static bool CanMove
         {
             get
@@ -290,10 +269,6 @@ namespace BrianSharp.Common
                             <= Player.GetAutoAttackDamage(i, true));
             }
         }
-
-        #endregion
-
-        #region Public Methods and Operators
 
         public static float GetAutoAttackRange(AttackableUnit target = null)
         {
@@ -439,10 +414,6 @@ namespace BrianSharp.Common
             {
                 return;
             }
-
-        #endregion
-
-        #region Methods
 
         private static void FireAfterAttack(AttackableUnit target)
         {
@@ -595,19 +566,11 @@ namespace BrianSharp.Common
             lastAttack = 0;
         }
 
-        #endregion
-
         public class BeforeAttackEventArgs
         {
-            #region Fields
-
             public AttackableUnit Target;
 
             private bool process = true;
-
-            #endregion
-
-            #region Public Properties
 
             public bool Process
             {
@@ -621,8 +584,6 @@ namespace BrianSharp.Common
                     this.process = value;
                 }
             }
-
-            #endregion
         }
     }
 }
