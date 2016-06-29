@@ -7,12 +7,17 @@ namespace BrianSharp
     using System.Reflection.Emit;
 
     using BrianSharp.Common;
+    
+    using EloBuddy;
+    using EloBuddy.SDK;
+    using EloBuddy.SDK.Events;
+    using EloBuddy.SDK.Menu;
+    using EloBuddy.SDK.Menu.Values;
+    using EloBuddy.SDK.Rendering;
+    using EloBuddy.SDK.Enumerations;
 
-    using LeagueSharp;
-    using LeagueSharp.Common;
-
-    using ItemData = LeagueSharp.Common.Data.ItemData;
-
+    namespace BrianSharp
+{
     internal class Program
     {
         #region Static Fields
@@ -79,7 +84,7 @@ namespace BrianSharp
             var infoMenu = new Menu("Info", "Info");
             {
                 infoMenu.AddItem(new MenuItem("Author", "Author: Brian"));
-                infoMenu.AddItem(new MenuItem("Paypal", "Paypal: dcbrian01@gmail.com"));
+                infoMenu.AddItem(new MenuItem("Paypal", "Paypal: rinaono1997@gmail.com"));
                 MainMenu.AddSubMenu(infoMenu);
             }
             TargetSelector.AddToMenu(MainMenu.AddSubMenu(new Menu("Target Selector", "TS")));
