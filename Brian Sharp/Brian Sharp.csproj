@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{249560F5-EB8B-446C-ACA6-49EC2DCC7403}</ProjectGuid>
+    <ProjectGuid>{4FB68D60-7543-4189-87B5-6DFF137C1C7A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>BrianSharp</RootNamespace>
