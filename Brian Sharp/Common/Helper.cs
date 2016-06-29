@@ -116,11 +116,6 @@ namespace BrianSharp.Common
             Orbwalker.Orbwalk(Orbwalker.InAutoAttackRange(target) ? target : null);
         }
 
-        public static MenuItem GetItem(string subMenu, string item)
-        {
-            return MainMenu.Item("_" + subMenu + "_" + item, true);
-        }
-
         #endregion
 
         #region Methods
