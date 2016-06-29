@@ -1,9 +1,15 @@
-﻿namespace BrianSharp.Evade
-{
     using System.Collections.Generic;
 
-    using LeagueSharp;
+    using EloBuddy;
+    using EloBuddy.SDK;
+    using EloBuddy.SDK.Events;
+    using EloBuddy.SDK.Menu;
+    using EloBuddy.SDK.Menu.Values;
+    using EloBuddy.SDK.Rendering;
+    using EloBuddy.SDK.Enumerations;    
 
+namespace BrianSharp.Evade
+{
     internal class EvadeSpellDatabase
     {
         #region Static Fields
