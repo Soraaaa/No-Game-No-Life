@@ -15,8 +15,6 @@ namespace BrianSharp.Common
 {
     internal class Helper : Program
     {
-        #region Enums
-
         public enum SmiteType
         {
             Grey,
@@ -29,11 +27,6 @@ namespace BrianSharp.Common
 
             None
         }
-
-        #endregion
-
-        #region Public Properties
-
         public static SmiteType CurrentSmiteType
         {
             get
@@ -90,10 +83,6 @@ namespace BrianSharp.Common
             }
         }
 
-        #endregion
-
-        #region Public Methods and Operators
-
         public static bool CanKill(Obj_AI_Base target, double subDmg)
         {
             return target.Health < subDmg;
@@ -115,10 +104,6 @@ namespace BrianSharp.Common
         {
             Orbwalker.Orbwalk(Orbwalker.InAutoAttackRange(target) ? target : null);
         }
-
-        #endregion
-
-        #region Methods
 
         private static bool CanSmiteMob(string name)
         {
@@ -156,7 +141,5 @@ namespace BrianSharp.Common
             }
             return GetValue<bool>("SmiteMob", "Wolf") && name.StartsWith("SRU_Murkwolf");
         }
-
-        #endregion
     }
 }
