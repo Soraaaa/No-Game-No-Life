@@ -94,66 +94,6 @@ namespace BrianSharp.Common
 
         #region Public Methods and Operators
 
-        public static MenuItem AddBool(Menu subMenu, string item, string display, bool state = true)
-        {
-            return subMenu.AddItem(new MenuItem("_" + subMenu.Name + "_" + item, display, true).SetValue(state));
-        }
-
-        public static MenuItem AddKeybind(
-            Menu subMenu,
-            string item,
-            string display,
-            string key,
-            KeyBindType type = KeyBindType.Press,
-            bool state = false)
-        {
-            return
-                subMenu.AddItem(
-                    new MenuItem("_" + subMenu.Name + "_" + item, display, true).SetValue(
-                        new KeyBind(key.ToCharArray()[0], type, state)));
-        }
-
-        public static MenuItem AddList(Menu subMenu, string item, string display, string[] text, int defaultIndex = 0)
-        {
-            return
-                subMenu.AddItem(
-                    new MenuItem("_" + subMenu.Name + "_" + item, display, true).SetValue(
-                        new StringList(text, defaultIndex)));
-        }
-
-        public static void AddNotif(string msg, int dur)
-        {
-            Notifications.AddNotification(new Notification(msg, dur, true));
-        }
-
-        public static MenuItem AddSlider(Menu subMenu, string item, string display, int cur, int min = 1, int max = 100)
-        {
-            return
-                subMenu.AddItem(
-                    new MenuItem("_" + subMenu.Name + "_" + item, display, true).SetValue(new Slider(cur, min, max)));
-        }
-
-        public static void AddSmiteMob(Menu menu)
-        {
-            var smiteMob = new Menu("Smite Mob If Killable", "SmiteMob");
-            AddBool(smiteMob, "Smite", "Use Smite");
-            AddBool(smiteMob, "Auto", "-> Auto Smite");
-            AddBool(smiteMob, "Baron", "-> Baron Nashor");
-            AddBool(smiteMob, "Dragon", "-> Dragon");
-            AddBool(smiteMob, "Red", "-> Red Brambleback");
-            AddBool(smiteMob, "Blue", "-> Blue Sentinel");
-            AddBool(smiteMob, "Krug", "-> Ancient Krug");
-            AddBool(smiteMob, "Gromp", "-> Gromp");
-            AddBool(smiteMob, "Raptor", "-> Crimson Raptor");
-            AddBool(smiteMob, "Wolf", "-> Greater Murk Wolf");
-            menu.AddSubMenu(smiteMob);
-        }
-
-        public static MenuItem AddText(Menu subMenu, string item, string display)
-        {
-            return subMenu.AddItem(new MenuItem("_" + subMenu.Name + "_" + item, display, true));
-        }
-
         public static bool CanKill(Obj_AI_Base target, double subDmg)
         {
             return target.Health < subDmg;
