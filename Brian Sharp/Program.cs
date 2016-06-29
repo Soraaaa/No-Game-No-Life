@@ -1,7 +1,5 @@
 ﻿using Orbwalk = BrianSharp.Common.Orbwalker;
 
-namespace BrianSharp
-{
     using System;
     using System.Linq;
     using System.Reflection.Emit;
