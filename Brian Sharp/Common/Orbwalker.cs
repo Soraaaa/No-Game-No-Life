@@ -26,8 +26,6 @@ namespace BrianSharp.Common
 
         private static Obj_AI_Minion prevMinion;
 
-        private static readonly Spell MovePrediction = new Spell(SpellSlot.Unknown, GetAutoAttackRange());
-
         private static readonly Random Random = new Random(DateTime.Now.Millisecond);
 
         #endregion
