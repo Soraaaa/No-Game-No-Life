@@ -104,13 +104,6 @@ namespace BrianSharp.Common
             return Flash.IsReady() && pos.IsValid() && Player.Spellbook.CastSpell(Flash, pos);
         }
 
-        public static bool CastIgnite(Obj_AI_Hero target)
-        {
-            return Ignite.IsReady() && target.IsValidTarget(600)
-                   && target.Health + 5 < Player.GetSummonerSpellDamage(target, Damage.SummonerSpell.Ignite)
-                   && Player.Spellbook.CastSpell(Ignite, target);
-        }
-
         public static bool CastSmite(Obj_AI_Base target, bool killable = true)
         {
             return Smite.IsReady() && target.IsValidTarget(760)
