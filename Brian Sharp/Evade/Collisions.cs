@@ -22,21 +22,15 @@ namespace BrianSharp.Evade
 
     internal class FastPredResult
     {
-        #region Fields
-
         public Vector2 CurrentPos;
 
         public bool IsMoving;
 
         public Vector2 PredictedPos;
-
-        #endregion
     }
 
     internal class DetectedCollision
     {
-        #region Fields
-
         public float Diff;
 
         public float Distance;
@@ -46,21 +40,13 @@ namespace BrianSharp.Evade
         public CollisionObjectTypes Type;
 
         public Obj_AI_Base Unit;
-
-        #endregion
     }
 
     internal static class Collisions
     {
-        #region Static Fields
-
         private static Vector2 wallCastedPos;
 
         private static int wallCastT;
-
-        #endregion
-
-        #region Public Methods and Operators
 
         public static Vector2 GetCollisionPoint(this Skillshot skillshot)
         {
@@ -191,10 +177,6 @@ namespace BrianSharp.Evade
             Obj_AI_Base.OnProcessSpellCast += OnProcessSpellCast;
         }
 
-        #endregion
-
-        #region Methods
-
         private static FastPredResult FastPrediction(Vector2 from, Obj_AI_Base unit, int delay, int speed)
         {
             var d = (delay / 1000f + (from.Distance(unit) / speed)) * unit.MoveSpeed;
@@ -227,7 +209,5 @@ namespace BrianSharp.Evade
             wallCastT = Utils.GameTimeTickCount;
             wallCastedPos = sender.ServerPosition.To2D();
         }
-
-        #endregion
     }
 }
