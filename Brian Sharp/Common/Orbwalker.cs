@@ -16,8 +16,6 @@ namespace BrianSharp.Common
     {
         #region Static Fields
 
-        public static Obj_AI_Hero ForcedTarget = null;
-
         private static Menu config;
 
         private static bool disableNextAttack, missileLaunched;
@@ -106,26 +104,6 @@ namespace BrianSharp.Common
                                          : (config.Item("OW_LastHit_Key").IsActive()
                                                 ? Mode.LastHit
                                                 : (config.Item("OW_Flee_Key").IsActive() ? Mode.Flee : Mode.None))));
-            }
-        }
-
-        public static Obj_AI_Hero GetBestHeroTarget
-        {
-            get
-            {
-                Obj_AI_Hero killableObj = null;
-                var hitsToKill = double.MaxValue;
-                foreach (var obj in HeroManager.Enemies.Where(i => InAutoAttackRange(i)))
-                {
-                    var killHits = obj.Health / Player.GetAutoAttackDamage(obj, true);
-                    if (killableObj != null && (killHits >= hitsToKill || obj.HasBuffOfType(BuffType.Invulnerability)))
-                    {
-                        continue;
-                    }
-                    killableObj = obj;
-                    hitsToKill = killHits;
-                }
-                return hitsToKill < 4 ? killableObj : TargetSelector.GetTarget(-1, TargetSelector.DamageType.Physical);
             }
         }
 
