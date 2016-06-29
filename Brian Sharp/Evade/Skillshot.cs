@@ -1,18 +1,12 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
-    using BrianSharp.Common;
-
     using EloBuddy;
     using EloBuddy.SDK;
-    using EloBuddy.SDK.Events;
-    using EloBuddy.SDK.Menu;
-    using EloBuddy.SDK.Menu.Values;
-    using EloBuddy.SDK.Rendering;
-    using EloBuddy.SDK.Enumerations;
-
     using SharpDX;
+    using EloBuddy.SDK.Menu.Values;
+
+    using BrianSharp.Common;
 
 namespace BrianSharp.Evade
 {
@@ -42,29 +36,19 @@ namespace BrianSharp.Evade
 
     public struct SafePathResult
     {
-        #region Fields
-
         public FoundIntersection Intersection;
 
         public bool IsSafe;
-
-        #endregion
-
-        #region Constructors and Destructors
 
         public SafePathResult(bool isSafe, FoundIntersection intersection)
         {
             this.IsSafe = isSafe;
             this.Intersection = intersection;
         }
-
-        #endregion
     }
 
     public struct FoundIntersection
     {
-        #region Fields
-
         public Vector2 ComingFrom;
 
         public float Distance;
@@ -75,10 +59,6 @@ namespace BrianSharp.Evade
 
         public bool Valid;
 
-        #endregion
-
-        #region Constructors and Destructors
-
         public FoundIntersection(float distance, int time, Vector2 point, Vector2 comingFrom)
         {
             this.Distance = distance;
@@ -87,14 +67,10 @@ namespace BrianSharp.Evade
             this.Point = point + Configs.GridSize * (this.ComingFrom - point).Normalized();
             this.Time = time;
         }
-
-        #endregion
     }
 
     public class Skillshot
     {
-        #region Fields
-
         public Geometry.Polygon.Arc Arc;
 
         public Geometry.Polygon.Circle Circle;
@@ -130,11 +106,7 @@ namespace BrianSharp.Evade
         private int helperTick;
 
         private int lastCollisionCalc;
-
-        #endregion
-
-        #region Constructors and Destructors
-
+        
         public Skillshot(
             DetectionType detectionType,
             SpellData spellData,
@@ -181,10 +153,6 @@ namespace BrianSharp.Evade
             this.UpdatePolygon();
         }
 
-        #endregion
-
-        #region Public Properties
-
         public bool Evade
         {
             get
@@ -225,10 +193,6 @@ namespace BrianSharp.Evade
 
         public Obj_AI_Base Unit { get; set; }
 
-        #endregion
-
-        #region Properties
-
         private Vector2 CollisionEnd
         {
             get
@@ -242,10 +206,6 @@ namespace BrianSharp.Evade
                                   : this.End);
             }
         }
-
-        #endregion
-
-        #region Public Methods and Operators
 
         public Vector2 GetMissilePosition(int time)
         {
@@ -455,10 +415,6 @@ namespace BrianSharp.Evade
             }
         }
 
-        #endregion
-
-        #region Methods
-
         private Vector2 GetGlobalMissilePosition(int time)
         {
             return this.Start
@@ -499,7 +455,5 @@ namespace BrianSharp.Evade
                     break;
             }
         }
-
-        #endregion
     }
 }
