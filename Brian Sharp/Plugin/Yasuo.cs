@@ -694,13 +694,6 @@ namespace BrianSharp.Plugin
             StackQ();
         }
 
-        private static Vector3 PosAfterE(Obj_AI_Base target)
-        {
-            return Player.ServerPosition.Extend(
-                target.ServerPosition,
-                Player.Distance(target) < 410 ? E.Range : Player.Distance(target) + 65);
-        }
-
         private static void StackQ()
         {
             if (!GetValue<KeyBind>("Misc", "StackQ").Active || !Q.IsReady() || Player.IsDashing() || HaveQ3)
@@ -726,19 +719,6 @@ namespace BrianSharp.Plugin
                     Q.CastIfHitchanceEquals(obj, HitChance.Medium, PacketCast);
                 }
             }
-        }
-
-        private static float TimeLeftR(Obj_AI_Hero target)
-        {
-            var buff = target.Buffs.FirstOrDefault(i => i.Type == BuffType.Knockback || i.Type == BuffType.Knockup);
-            return buff != null ? buff.EndTime - Game.Time : -1;
-        }
-
-        private static bool UnderTower(Vector3 pos)
-        {
-            return
-                ObjectManager.Get<Obj_AI_Turret>()
-                    .Any(i => i.IsEnemy && !i.IsDead && i.Distance(pos) < 850 + Player.BoundingRadius);
         }
 
         #endregion
@@ -794,18 +774,6 @@ namespace BrianSharp.Plugin
                 Game.OnUpdate += OnUpdateEvade;
                 SkillshotDetector.OnDetectSkillshot += OnDetectSkillshot;
                 SkillshotDetector.OnDeleteMissile += OnDeleteMissile;
-            }
-
-            public static IsSafeResult IsSafePoint(Vector2 point)
-            {
-                var result = new IsSafeResult { SkillshotList = new List<Skillshot>() };
-                foreach (var skillshot in
-                    SkillshotDetector.DetectedSkillshots.Where(i => i.Evade && !i.IsSafePoint(point)))
-                {
-                    result.SkillshotList.Add(skillshot);
-                }
-                result.IsSafe = result.SkillshotList.Count == 0;
-                return result;
             }
 
             #endregion
@@ -869,28 +837,6 @@ namespace BrianSharp.Plugin
                     }
                 }
                 return goodTargets.Any() ? goodTargets : (onlyGood ? new List<Obj_AI_Base>() : badTargets);
-            }
-
-            private static SafePathResult IsSafePath(List<Vector2> path, int timeOffset, int speed = -1, int delay = 0)
-            {
-                var isSafe = false;
-                var intersections = new List<FoundIntersection>();
-                var intersection = new FoundIntersection();
-                foreach (var sResult in
-                    SkillshotDetector.DetectedSkillshots.Where(i => i.Evade)
-                        .Select(i => i.IsSafePath(path, timeOffset, speed, delay)))
-                {
-                    isSafe = sResult.IsSafe;
-                    if (sResult.Intersection.Valid)
-                    {
-                        intersections.Add(sResult.Intersection);
-                    }
-                }
-                return isSafe
-                           ? new SafePathResult(true, intersection)
-                           : new SafePathResult(
-                                 false,
-                                 intersections.Count > 0 ? intersections.MinOrDefault(i => i.Distance) : intersection);
             }
 
             private static void OnDeleteMissile(Skillshot skillshot, MissileClient missile)
@@ -1177,52 +1123,6 @@ namespace BrianSharp.Plugin
                 }
             }
 
-            private static void TryToEvade(List<Skillshot> hitBy, Vector2 to)
-            {
-                var dangerLevel =
-                    hitBy.Select(i => GetValue<Slider>("ESS_" + i.SpellData.MenuItemName, "DangerLevel").Value)
-                        .Concat(new[] { 0 })
-                        .Max();
-                foreach (var evadeSpell in
-                    EvadeSpellDatabase.Spells.Where(i => i.Enabled && i.DangerLevel <= dangerLevel && i.IsReady)
-                        .OrderBy(i => i.DangerLevel))
-                {
-                    if (evadeSpell.EvadeType == EvadeTypes.Dash && evadeSpell.CastType == CastTypes.Target)
-                    {
-                        var targets =
-                            GetEvadeTargets(evadeSpell)
-                                .Where(
-                                    i =>
-                                    IsSafePoint(PosAfterE(i).To2D()).IsSafe
-                                    && (!UnderTower(PosAfterE(i)) || GetValue<bool>("ESSS_" + evadeSpell.Name, "ETower")))
-                                .ToList();
-                        if (targets.Count > 0)
-                        {
-                            var closestTarget = targets.MinOrDefault(i => PosAfterE(i).To2D().Distance(to));
-                            Player.Spellbook.CastSpell(evadeSpell.Slot, closestTarget);
-                            return;
-                        }
-                    }
-                    if (evadeSpell.EvadeType == EvadeTypes.WindWall
-                        && hitBy.Where(
-                            i =>
-                            i.SpellData.CollisionObjects.Contains(CollisionObjectTypes.YasuoWall)
-                            && i.IsAboutToHit(
-                                150 + evadeSpell.Delay - GetValue<Slider>("ESSS_" + evadeSpell.Name, "WDelay").Value,
-                                Player))
-                               .OrderByDescending(
-                                   i => GetValue<Slider>("ESS_" + i.SpellData.MenuItemName, "DangerLevel").Value)
-                               .Any(
-                                   i =>
-                                   Player.Spellbook.CastSpell(
-                                       evadeSpell.Slot,
-                                       Player.ServerPosition.Extend(i.Start.To3D(), 100))))
-                    {
-                        return;
-                    }
-                }
-            }
-
             #endregion
 
             internal struct IsSafeResult
@@ -1244,8 +1144,6 @@ namespace BrianSharp.Plugin
             private static readonly List<Targets> DetectedTargets = new List<Targets>();
 
             private static readonly List<SpellData> Spells = new List<SpellData>();
-
-            private static Vector2 wallCastedPos;
 
             #endregion
 
@@ -1303,33 +1201,6 @@ namespace BrianSharp.Plugin
             #endregion
 
             #region Methods
-
-            private static bool GoThroughWall(Vector2 pos1, Vector2 pos2)
-            {
-                if (Wall == null)
-                {
-                    return false;
-                }
-                var wallWidth = 300 + 50 * Convert.ToInt32(Wall.Name.Substring(Wall.Name.Length - 6, 1));
-                var wallDirection = (Wall.Position.To2D() - wallCastedPos).Normalized().Perpendicular();
-                var wallStart = Wall.Position.To2D() + wallWidth / 2f * wallDirection;
-                var wallEnd = wallStart - wallWidth * wallDirection;
-                var wallPolygon = new Geometry.Polygon.Rectangle(wallStart, wallEnd, 75);
-                var intersections = new List<Vector2>();
-                for (var i = 0; i < wallPolygon.Points.Count; i++)
-                {
-                    var inter =
-                        wallPolygon.Points[i].Intersection(
-                            wallPolygon.Points[i != wallPolygon.Points.Count - 1 ? i + 1 : 0],
-                            pos1,
-                            pos2);
-                    if (inter.Intersects)
-                    {
-                        intersections.Add(inter.Point);
-                    }
-                }
-                return intersections.Any();
-            }
 
             private static void LoadSpellData()
             {
@@ -1609,8 +1480,6 @@ namespace BrianSharp.Plugin
                 #region Fields
 
                 public MissileClient Obj;
-
-                public Vector3 Start;
 
                 #endregion
             }
