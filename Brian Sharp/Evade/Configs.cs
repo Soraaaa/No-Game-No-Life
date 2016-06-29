@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AkaYasuo
+namespace BrianSharp.Evade
 {
     internal static class Configs
     {
