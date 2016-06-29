@@ -1,29 +1,23 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text.RegularExpressions;
-
+    using System.Text;
+    using System.Threading.Tasks;
     using EloBuddy;
     using EloBuddy.SDK;
+    using EloBuddy.SDK.Enumerations;
     using EloBuddy.SDK.Events;
     using EloBuddy.SDK.Menu;
     using EloBuddy.SDK.Menu.Values;
     using EloBuddy.SDK.Rendering;
-    using EloBuddy.SDK.Enumerations;
-
     using SharpDX;
+    using System.Text.RegularExpressions;
 
 namespace BrianSharp.Evade
 {
     internal static class SkillshotDetector
     {
-        #region Static Fields
-
         public static List<Skillshot> DetectedSkillshots = new List<Skillshot>();
-
-        #endregion
-
-        #region Constructors and Destructors
 
         static SkillshotDetector()
         {
@@ -33,25 +27,13 @@ namespace BrianSharp.Evade
             Obj_AI_Base.OnProcessSpellCast += OnProcessSpellCast;
         }
 
-        #endregion
-
-        #region Delegates
-
         public delegate void OnDeleteMissileH(Skillshot skillshot, MissileClient missile);
 
         public delegate void OnDetectSkillshotH(Skillshot skillshot);
 
-        #endregion
-
-        #region Public Events
-
         public static event OnDeleteMissileH OnDeleteMissile;
 
         public static event OnDetectSkillshotH OnDetectSkillshot;
-
-        #endregion
-
-        #region Methods
 
         private static void ObjMissileClientOnCreate(GameObject sender, EventArgs args)
         {
@@ -229,7 +211,5 @@ namespace BrianSharp.Evade
                 OnDetectSkillshot(new Skillshot(detectionType, spellData, startT, start, end, unit));
             }
         }
-
-        #endregion
     }
 }
