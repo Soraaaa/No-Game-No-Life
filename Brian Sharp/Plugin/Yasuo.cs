@@ -1,21 +1,22 @@
-﻿namespace BrianSharp.Plugin
-{
     using System;
+    using EloBuddy;
+    using EloBuddy.SDK;
+    using EloBuddy.SDK.Events;
+    using EloBuddy.SDK.Menu;
+    using EloBuddy.SDK.Menu.Values;
+    using EloBuddy.SDK.Rendering;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text.RegularExpressions;
-
+    using System.Text;
+    using System.Threading.Tasks;
+    using EloBuddy.SDK.Enumerations;
     using BrianSharp.Common;
     using BrianSharp.Evade;
-
-    using LeagueSharp;
-    using LeagueSharp.Common;
-
-    using SharpDX;
-
     using Color = System.Drawing.Color;
     using Orbwalk = BrianSharp.Common.Orbwalker;
 
+namespace BrianSharp.Plugin
+{
     internal class Yasuo : Helper
     {
         #region Constants
