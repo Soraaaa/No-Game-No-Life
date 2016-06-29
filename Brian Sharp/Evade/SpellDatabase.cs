@@ -1,31 +1,25 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-
+    using System.Text;
+    using System.Threading.Tasks;
     using EloBuddy;
     using EloBuddy.SDK;
+    using EloBuddy.SDK.Enumerations;
     using EloBuddy.SDK.Events;
     using EloBuddy.SDK.Menu;
     using EloBuddy.SDK.Menu.Values;
     using EloBuddy.SDK.Rendering;
-    using EloBuddy.SDK.Enumerations;
+    using SharpDX;
     
 namespace BrianSharp.Evade
 {
     public static class SpellDatabase
     {
-        #region Static Fields
-
         public static List<SpellData> Spells = new List<SpellData>();
-
-        #endregion
-
-        #region Constructors and Destructors
 
         static SpellDatabase()
         {
-            #region Aatrox
-
             Spells.Add(
                 new SpellData
                     {
@@ -42,10 +36,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "AatroxEConeMissile",
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Aatrox
-
-            #region Ahri
 
             Spells.Add(
                 new SpellData
@@ -82,10 +72,6 @@ namespace BrianSharp.Evade
                                 }
                     });
 
-            #endregion Ahri
-
-            #region Amumu
-
             Spells.Add(
                 new SpellData
                     {
@@ -108,10 +94,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = int.MaxValue, FixedRange = true, DangerValue = 5, IsDangerous = true
                     });
 
-            #endregion Amumu
-
-            #region Anivia
-
             Spells.Add(
                 new SpellData
                     {
@@ -121,10 +103,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "FlashFrostSpell", CanBeRemoved = true,
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Anivia
-
-            #region Annie
 
             Spells.Add(
                 new SpellData
@@ -140,10 +118,6 @@ namespace BrianSharp.Evade
                         Type = SkillShotType.SkillshotCircle, Delay = 250, Range = 600, Radius = 251,
                         MissileSpeed = int.MaxValue, AddHitbox = true, DangerValue = 5, IsDangerous = true
                     });
-
-            #endregion Annie
-
-            #region Ashe
 
             Spells.Add(
                 new SpellData
@@ -170,10 +144,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.Champion, CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Ashe
-
-            #region Azir
-
             Spells.Add(
                 new SpellData
                     {
@@ -181,10 +151,6 @@ namespace BrianSharp.Evade
                         Delay = 250, Range = 875, Radius = 80, MissileSpeed = 1000, AddHitbox = true, DangerValue = 2,
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Azir
-
-            #region Bard
 
             Spells.Add(
                 new SpellData
@@ -202,10 +168,6 @@ namespace BrianSharp.Evade
                         Type = SkillShotType.SkillshotCircle, Delay = 500, Range = 3400, Radius = 350, MissileSpeed = 2100,
                         AddHitbox = true, DangerValue = 2, MissileSpellName = "BardR"
                     });
-
-            #endregion
-
-            #region Blatzcrink
 
             Spells.Add(
                 new SpellData
@@ -229,10 +191,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = int.MaxValue, FixedRange = true, DangerValue = 2
                     });
 
-            #endregion Blatzcrink
-
-            #region Brand
-
             Spells.Add(
                 new SpellData
                     {
@@ -254,10 +212,6 @@ namespace BrianSharp.Evade
                         Type = SkillShotType.SkillshotCircle, Delay = 850, Range = 900, Radius = 240,
                         MissileSpeed = int.MaxValue, AddHitbox = true, DangerValue = 2
                     });
-
-            #endregion Brand
-
-            #region Braum
 
             Spells.Add(
                 new SpellData
@@ -281,10 +235,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = 1400, FixedRange = true, AddHitbox = true, DangerValue = 4, IsDangerous = true,
                         MissileSpellName = "braumrmissile", CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Braum
-
-            #region Caitlyn
 
             Spells.Add(
                 new SpellData
@@ -310,10 +260,6 @@ namespace BrianSharp.Evade
                                 }
                     });
 
-            #endregion Caitlyn
-
-            #region Cassiopeia
-
             Spells.Add(
                 new SpellData
                     {
@@ -331,10 +277,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "CassiopeiaPetrifyingGaze"
                     });
 
-            #endregion Cassiopeia
-
-            #region Chogath
-
             Spells.Add(
                 new SpellData
                     {
@@ -342,10 +284,6 @@ namespace BrianSharp.Evade
                         Type = SkillShotType.SkillshotCircle, Delay = 1200, Range = 950, Radius = 250,
                         MissileSpeed = int.MaxValue, AddHitbox = true, DangerValue = 3, MissileSpellName = "Rupture"
                     });
-
-            #endregion Chogath
-
-            #region Corki
 
             Spells.Add(
                 new SpellData
@@ -384,10 +322,6 @@ namespace BrianSharp.Evade
                                 }
                     });
 
-            #endregion Corki
-
-            #region Darius
-
             Spells.Add(
                 new SpellData
                     {
@@ -404,10 +338,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = int.MaxValue, FixedRange = true, DangerValue = 3, IsDangerous = true,
                         MissileSpellName = "DariusAxeGrabCone"
                     });
-
-            #endregion Darius
-
-            #region Diana
 
             Spells.Add(
                 new SpellData
@@ -427,10 +357,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Diana
-
-            #region DrMundo
-
             Spells.Add(
                 new SpellData
                     {
@@ -445,10 +371,6 @@ namespace BrianSharp.Evade
                                     CollisionObjectTypes.YasuoWall
                                 }
                     });
-
-            #endregion DrMundo
-
-            #region Draven
 
             Spells.Add(
                 new SpellData
@@ -467,10 +389,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = 2000, FixedRange = true, AddHitbox = true, DangerValue = 5, IsDangerous = true,
                         MissileSpellName = "DravenR", CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Draven
-
-            #region Ekko
 
             Spells.Add(
                 new SpellData
@@ -498,10 +416,6 @@ namespace BrianSharp.Evade
                         CanBeRemoved = true, FromObjects = new[] { "Ekko_Base_R_TrailEnd.troy" }
                     });
 
-            #endregion Ekko
-
-            #region Elise
-
             Spells.Add(
                 new SpellData
                     {
@@ -517,10 +431,6 @@ namespace BrianSharp.Evade
                                 }
                     });
 
-            #endregion Elise
-
-            #region Evelynn
-
             Spells.Add(
                 new SpellData
                     {
@@ -529,10 +439,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = int.MaxValue, AddHitbox = true, DangerValue = 5, IsDangerous = true,
                         MissileSpellName = "EvelynnR"
                     });
-
-            #endregion Evelynn
-
-            #region Ezreal
 
             Spells.Add(
                 new SpellData
@@ -569,10 +475,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }, Id = 245
                     });
 
-            #endregion Ezreal
-
-            #region Fiora
-
             Spells.Add(
                 new SpellData
                     {
@@ -581,10 +483,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = 3200, FixedRange = true, AddHitbox = true, DangerValue = 2,
                         MissileSpellName = "FioraWMissile"
                     });
-
-            #endregion Fiora
-
-            #region Fizz
 
             Spells.Add(
                 new SpellData
@@ -595,10 +493,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "FizzMarinerDoomMissile", CanBeRemoved = true,
                         CollisionObjects = new[] { CollisionObjectTypes.Champion, CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Fizz
-
-            #region Galio
 
             Spells.Add(
                 new SpellData
@@ -624,10 +518,6 @@ namespace BrianSharp.Evade
                         Type = SkillShotType.SkillshotCircle, Delay = 250, Range = 0, Radius = 550,
                         MissileSpeed = int.MaxValue, FixedRange = true, DangerValue = 5, IsDangerous = true
                     });
-
-            #endregion Galio
-
-            #region Gnar
 
             Spells.Add(
                 new SpellData
@@ -686,10 +576,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = int.MaxValue, FixedRange = true, DangerValue = 5, IsDangerous = true
                     });
 
-            #endregion
-
-            #region Gragas
-
             Spells.Add(
                 new SpellData
                     {
@@ -717,10 +603,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Gragas
-
-            #region Graves
-
             Spells.Add(
                 new SpellData
                     {
@@ -741,10 +623,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.Champion, CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Graves
-
-            #region Heimerdinger
-
             Spells.Add(
                 new SpellData
                     {
@@ -763,10 +641,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Heimerdinger
-
-            #region Irelia
-
             Spells.Add(
                 new SpellData
                     {
@@ -777,10 +651,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Irelia
-
-            #region Janna
-
             Spells.Add(
                 new SpellData
                     {
@@ -789,10 +659,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = 900, AddHitbox = true, DangerValue = 2, MissileSpellName = "HowlingGaleSpell",
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Janna
-
-            #region JarvanIV
 
             Spells.Add(
                 new SpellData
@@ -816,10 +682,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = int.MaxValue, AddHitbox = true, DangerValue = 2,
                         MissileSpellName = "JarvanIVDemacianStandard"
                     });
-
-            #endregion JarvanIV
-
-            #region Jayce
 
             Spells.Add(
                 new SpellData
@@ -850,10 +712,6 @@ namespace BrianSharp.Evade
                                 }
                     });
 
-            #endregion Jayce
-
-            #region Jinx
-
             Spells.Add(
                 new SpellData
                     {
@@ -878,10 +736,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.Champion, CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Jinx
-
-            #region Kalista
-
             Spells.Add(
                 new SpellData
                     {
@@ -897,10 +751,6 @@ namespace BrianSharp.Evade
                                     CollisionObjectTypes.YasuoWall
                                 }
                     });
-
-            #endregion Kalista
-
-            #region Karma
 
             Spells.Add(
                 new SpellData
@@ -931,10 +781,6 @@ namespace BrianSharp.Evade
                                 }
                     });
 
-            #endregion Karma
-
-            #region Karthus
-
             Spells.Add(
                 new SpellData
                     {
@@ -950,10 +796,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = int.MaxValue, AddHitbox = true, DangerValue = 2
                     });
 
-            #endregion Karthus
-
-            #region Kassadin
-
             Spells.Add(
                 new SpellData
                     {
@@ -961,10 +803,6 @@ namespace BrianSharp.Evade
                         Type = SkillShotType.SkillshotCircle, Delay = 250, Range = 450, Radius = 270,
                         MissileSpeed = int.MaxValue, AddHitbox = true, DangerValue = 2, MissileSpellName = "RiftWalk"
                     });
-
-            #endregion Kassadin
-
-            #region Kennen
 
             Spells.Add(
                 new SpellData
@@ -980,10 +818,6 @@ namespace BrianSharp.Evade
                                     CollisionObjectTypes.YasuoWall
                                 }
                     });
-
-            #endregion Kennen
-
-            #region Khazix
 
             Spells.Add(
                 new SpellData
@@ -1007,10 +841,6 @@ namespace BrianSharp.Evade
                         Type = SkillShotType.SkillshotCircle, Delay = 250, Range = 600, Radius = 300, MissileSpeed = 1500,
                         AddHitbox = true, DangerValue = 2, MissileSpellName = "KhazixE"
                     });
-
-            #endregion Khazix
-
-            #region KogMaw
 
             Spells.Add(
                 new SpellData
@@ -1043,10 +873,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = int.MaxValue, AddHitbox = true, DangerValue = 2,
                         MissileSpellName = "KogMawLivingArtillery"
                     });
-
-            #endregion KogMaw
-
-            #region Leblanc
 
             Spells.Add(
                 new SpellData
@@ -1091,10 +917,6 @@ namespace BrianSharp.Evade
                                 }
                     });
 
-            #endregion Leblanc
-
-            #region LeeSin
-
             Spells.Add(
                 new SpellData
                     {
@@ -1109,10 +931,6 @@ namespace BrianSharp.Evade
                                     CollisionObjectTypes.YasuoWall
                                 }
                     });
-
-            #endregion LeeSin
-
-            #region Leona
 
             Spells.Add(
                 new SpellData
@@ -1131,10 +949,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = int.MaxValue, AddHitbox = true, DangerValue = 5, IsDangerous = true,
                         MissileSpellName = "LeonaSolarFlare"
                     });
-
-            #endregion Leona
-
-            #region Lissandra
 
             Spells.Add(
                 new SpellData
@@ -1163,10 +977,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Lulu
-
-            #region Lucian
-
             Spells.Add(
                 new SpellData
                     {
@@ -1194,10 +1004,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Lucian
-
-            #region Lulu
-
             Spells.Add(
                 new SpellData
                     {
@@ -1214,10 +1020,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = 1450, FixedRange = true, AddHitbox = true, DangerValue = 2,
                         MissileSpellName = "LuluQMissileTwo", CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Lulu
-
-            #region Lux
 
             Spells.Add(
                 new SpellData
@@ -1251,10 +1053,6 @@ namespace BrianSharp.Evade
                         IsDangerous = true, MissileSpellName = "LuxMaliceCannon"
                     });
 
-            #endregion Lux
-
-            #region Malphite
-
             Spells.Add(
                 new SpellData
                     {
@@ -1262,10 +1060,6 @@ namespace BrianSharp.Evade
                         Type = SkillShotType.SkillshotCircle, Delay = 0, Range = 1000, Radius = 270, MissileSpeed = 1500,
                         AddHitbox = true, DangerValue = 5, IsDangerous = true, MissileSpellName = "UFSlash"
                     });
-
-            #endregion Malphite
-
-            #region Malzahar
 
             Spells.Add(
                 new SpellData
@@ -1275,10 +1069,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = int.MaxValue, AddHitbox = true, DangerValue = 2, DontCross = true,
                         MissileSpellName = "AlZaharCalloftheVoid"
                     });
-
-            #endregion Malzahar
-
-            #region Morgana
 
             Spells.Add(
                 new SpellData
@@ -1294,10 +1084,6 @@ namespace BrianSharp.Evade
                                     CollisionObjectTypes.YasuoWall
                                 }
                     });
-
-            #endregion Morgana
-
-            #region Nami
 
             Spells.Add(
                 new SpellData
@@ -1316,10 +1102,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "NamiRMissile", CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Nami
-
-            #region Nautilus
-
             Spells.Add(
                 new SpellData
                     {
@@ -1334,10 +1116,6 @@ namespace BrianSharp.Evade
                                     CollisionObjectTypes.YasuoWall
                                 }
                     });
-
-            #endregion Nautilus
-
-            #region Nidalee
 
             Spells.Add(
                 new SpellData
@@ -1354,10 +1132,6 @@ namespace BrianSharp.Evade
                                 }
                     });
 
-            #endregion Nidalee
-
-            #region Nocturne
-
             Spells.Add(
                 new SpellData
                     {
@@ -1366,10 +1140,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = 1400, DangerValue = 2, MissileSpellName = "NocturneDuskbringer",
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Nocturne
-
-            #region Olaf
 
             Spells.Add(
                 new SpellData
@@ -1380,10 +1150,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "olafaxethrow", CanBeRemoved = true,
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Olaf
-
-            #region Orianna
 
             Spells.Add(
                 new SpellData
@@ -1425,10 +1191,6 @@ namespace BrianSharp.Evade
                         IsDangerous = true, MissileSpellName = "OrianaDetonateCommand", FromObject = "yomu_ring_"
                     });
 
-            #endregion Orianna
-
-            #region Quinn
-
             Spells.Add(
                 new SpellData
                     {
@@ -1443,10 +1205,6 @@ namespace BrianSharp.Evade
                                     CollisionObjectTypes.YasuoWall
                                 }
                     });
-
-            #endregion Quinn
-
-            #region RekSai
 
             Spells.Add(
                 new SpellData
@@ -1463,10 +1221,6 @@ namespace BrianSharp.Evade
                                 }
                     });
 
-            #endregion RekSai
-
-            #region Rengar
-
             Spells.Add(
                 new SpellData
                     {
@@ -1482,10 +1236,6 @@ namespace BrianSharp.Evade
                                 }
                     });
 
-            #endregion Rengar
-
-            #region Riven
-
             Spells.Add(
                 new SpellData
                     {
@@ -1496,10 +1246,6 @@ namespace BrianSharp.Evade
                         ExtraMissileNames = new[] { "RivenLightsaberMissileSide" },
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Riven
-
-            #region Rumble
 
             Spells.Add(
                 new SpellData
@@ -1523,10 +1269,6 @@ namespace BrianSharp.Evade
                         Radius = 200, MissileSpeed = 1600, FixedRange = true, AddHitbox = true, DangerValue = 4,
                         MissileSpellName = "RumbleCarpetBombMissile"
                     });
-
-            #endregion Rumble
-
-            #region Ryze
 
             Spells.Add(
                 new SpellData
@@ -1557,10 +1299,6 @@ namespace BrianSharp.Evade
                                 }
                     });
 
-            #endregion
-
-            #region Sejuani
-
             Spells.Add(
                 new SpellData
                     {
@@ -1579,10 +1317,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.Champion, CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Sejuani
-
-            #region Shen
-
             Spells.Add(
                 new SpellData
                     {
@@ -1591,10 +1325,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = 1600, AddHitbox = true, DangerValue = 3, IsDangerous = true,
                         MissileSpellName = "ShenShadowDash", ExtraRange = 200
                     });
-
-            #endregion Shen
-
-            #region Shyvana
 
             Spells.Add(
                 new SpellData
@@ -1624,9 +1354,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "ShyvanaTransformCast", ExtraRange = 200
                     });
 
-            #endregion Shyvana
-
-            #region Sion
 
             Spells.Add(
                 new SpellData
@@ -1646,10 +1373,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.Champion }
                     });
 
-            #endregion Sion
-
-            #region Sivir
-
             Spells.Add(
                 new SpellData
                     {
@@ -1668,10 +1391,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "SivirQMissile", CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Sivir
-
-            #region Skarner
-
             Spells.Add(
                 new SpellData
                     {
@@ -1682,10 +1401,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Skarner
-
-            #region Sona
-
             Spells.Add(
                 new SpellData
                     {
@@ -1695,10 +1410,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "SonaR", CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Sona
-
-            #region Soraka
-
             Spells.Add(
                 new SpellData
                     {
@@ -1706,10 +1417,6 @@ namespace BrianSharp.Evade
                         Type = SkillShotType.SkillshotCircle, Delay = 500, Range = 950, Radius = 300, MissileSpeed = 1750,
                         AddHitbox = true, DangerValue = 2, CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Soraka
-
-            #region Swain
 
             Spells.Add(
                 new SpellData
@@ -1719,10 +1426,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = int.MaxValue, AddHitbox = true, DangerValue = 3, IsDangerous = true,
                         MissileSpellName = "SwainShadowGrasp"
                     });
-
-            #endregion Swain
-
-            #region Syndra
 
             Spells.Add(
                 new SpellData
@@ -1755,10 +1458,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "SyndraE", CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Syndra
-
-            #region Tahm Kench
-
             Spells.Add(
                 new SpellData
                     {
@@ -1773,10 +1472,6 @@ namespace BrianSharp.Evade
                                     CollisionObjectTypes.YasuoWall
                                 }
                     });
-
-            #endregion Tahm Kench
-
-            #region Talon
 
             Spells.Add(
                 new SpellData
@@ -1798,10 +1493,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "talonrakemissiletwo",
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Riven
-
-            #region Thresh
 
             Spells.Add(
                 new SpellData
@@ -1827,10 +1518,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Thresh
-
-            #region Tristana
-
             Spells.Add(
                 new SpellData
                     {
@@ -1839,10 +1526,6 @@ namespace BrianSharp.Evade
                         AddHitbox = true, DangerValue = 2, MissileSpellName = "RocketJump"
                     });
 
-            #endregion Tristana
-
-            #region Tryndamere
-
             Spells.Add(
                 new SpellData
                     {
@@ -1850,10 +1533,6 @@ namespace BrianSharp.Evade
                         Type = SkillShotType.SkillshotMissileLine, Delay = 0, Range = 660, Radius = 93,
                         MissileSpeed = 1300, AddHitbox = true, DangerValue = 2, MissileSpellName = "slashCast"
                     });
-
-            #endregion Tryndamere
-
-            #region TwistedFate
 
             Spells.Add(
                 new SpellData
@@ -1866,10 +1545,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion TwistedFate
-
-            #region Twitch
-
             Spells.Add(
                 new SpellData
                     {
@@ -1878,10 +1553,6 @@ namespace BrianSharp.Evade
                         AddHitbox = true, DangerValue = 2, MissileSpellName = "TwitchVenomCaskMissile",
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Twitch
-
-            #region Urgot
 
             Spells.Add(
                 new SpellData
@@ -1905,10 +1576,6 @@ namespace BrianSharp.Evade
                         AddHitbox = true, DangerValue = 2, MissileSpellName = "UrgotPlasmaGrenadeBoom",
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Urgot
-
-            #region Varus
 
             Spells.Add(
                 new SpellData
@@ -1936,10 +1603,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.Champion, CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Varus
-
-            #region Veigar
-
             Spells.Add(
                 new SpellData
                     {
@@ -1964,10 +1627,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = int.MaxValue, DangerValue = 3, IsDangerous = true, DontAddExtraDuration = true,
                         RingRadius = 350, ExtraDuration = 3300, DontCross = true
                     });
-
-            #endregion Veigar
-
-            #region Velkoz
 
             Spells.Add(
                 new SpellData
@@ -2013,10 +1672,6 @@ namespace BrianSharp.Evade
                         DangerValue = 2, MissileSpellName = "VelkozEMissile"
                     });
 
-            #endregion Velkoz
-
-            #region Vi
-
             Spells.Add(
                 new SpellData
                     {
@@ -2025,10 +1680,6 @@ namespace BrianSharp.Evade
                         MissileSpeed = 1500, FixedRange = true, AddHitbox = true, DangerValue = 3, IsDangerous = true,
                         MissileSpellName = "ViQMissile"
                     });
-
-            #endregion Vi
-
-            #region Viktor
 
             Spells.Add(
                 new SpellData
@@ -2039,10 +1690,6 @@ namespace BrianSharp.Evade
                         ExtraMissileNames = new[] { "viktoreaugmissile" },
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Viktor
-
-            #region Xerath
 
             Spells.Add(
                 new SpellData
@@ -2083,10 +1730,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "xerathrmissilewrapper"
                     });
 
-            #endregion Xerath
-
-            #region Yasuo
-
             Spells.Add(
                 new SpellData
                     {
@@ -2112,10 +1755,6 @@ namespace BrianSharp.Evade
                         MissileSpellName = "yasuoq3w", CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Yasuo
-
-            #region Zac
-
             Spells.Add(
                 new SpellData
                     {
@@ -2123,10 +1762,6 @@ namespace BrianSharp.Evade
                         Delay = 500, Range = 550, Radius = 120, MissileSpeed = int.MaxValue, FixedRange = true,
                         AddHitbox = true, DangerValue = 2, MissileSpellName = "ZacQ"
                     });
-
-            #endregion Zac
-
-            #region Zed
 
             Spells.Add(
                 new SpellData
@@ -2139,10 +1774,6 @@ namespace BrianSharp.Evade
                         ExtraMissileNames = new[] { "zedshurikenmistwo", "zedshurikenmisthree" },
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Zed
-
-            #region Ziggs
 
             Spells.Add(
                 new SpellData
@@ -2195,10 +1826,6 @@ namespace BrianSharp.Evade
                         DisableFowDetection = true
                     });
 
-            #endregion Ziggs
-
-            #region Zilean
-
             Spells.Add(
                 new SpellData
                     {
@@ -2207,10 +1834,6 @@ namespace BrianSharp.Evade
                         AddHitbox = true, DangerValue = 2, MissileSpellName = "ZileanQMissile",
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
-
-            #endregion Zilean
-
-            #region Zyra
 
             Spells.Add(
                 new SpellData
@@ -2238,13 +1861,6 @@ namespace BrianSharp.Evade
                         CollisionObjects = new[] { CollisionObjectTypes.YasuoWall }
                     });
 
-            #endregion Zyra
-        }
-
-        #endregion
-
-        #region Public Methods and Operators
-
         public static SpellData GetByMissileName(string missileSpellName)
         {
             return
@@ -2263,7 +1879,5 @@ namespace BrianSharp.Evade
                     string.Equals(i.SpellName, spellName, StringComparison.CurrentCultureIgnoreCase)
                     || i.ExtraSpellNames.Contains(spellName.ToLower()));
         }
-
-        #endregion
     }
 }
