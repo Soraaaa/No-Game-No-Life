@@ -18,21 +18,11 @@
 {
     internal class Program
     {
-        #region Static Fields
-
         public static SpellSlot Flash, Smite, Ignite;
 
         public static Menu MainMenu;
 
         public static Item Tiamat, Hydra, Youmuu, Zhonya, Seraph, Sheen, Iceborn, Trinity;
-
-        #endregion
-
-        #region Public Properties
-
-        #endregion
-
-        #region Methods
 
         private static void Main(string[] args)
         {
@@ -103,7 +93,5 @@
             MainMenu.AddToMainMenu();
             Helper.AddNotif(string.Format("[Brian Sharp] - {0}: Loaded !", Player.ChampionName), 3000);
         }
-
-        #endregion
     }
 }
