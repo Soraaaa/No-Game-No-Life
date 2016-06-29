@@ -1,24 +1,23 @@
+    using System;
     using System.Collections.Generic;
-
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
     using EloBuddy;
     using EloBuddy.SDK;
+    using EloBuddy.SDK.Enumerations;
     using EloBuddy.SDK.Events;
     using EloBuddy.SDK.Menu;
     using EloBuddy.SDK.Menu.Values;
     using EloBuddy.SDK.Rendering;
-    using EloBuddy.SDK.Enumerations;    
+    using SharpDX;
+
 
 namespace BrianSharp.Evade
 {
     internal class EvadeSpellDatabase
     {
-        #region Static Fields
-
         public static List<EvadeSpellData> Spells = new List<EvadeSpellData>();
-
-        #endregion
-
-        #region Constructors and Destructors
 
         static EvadeSpellDatabase()
         {
@@ -40,7 +39,5 @@ namespace BrianSharp.Evade
                         CastType = CastTypes.Position, MaxRange = 400, Speed = int.MaxValue, Delay = 250
                     });
         }
-
-        #endregion
     }
 }
