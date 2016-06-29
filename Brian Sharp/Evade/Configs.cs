@@ -2,7 +2,6 @@ namespace BrianSharp.Evade
 {
     internal static class Configs
     {
-        #region Constants
 
         public const int EvadingFirstTimeOffset = 250;
 
@@ -14,6 +13,5 @@ namespace BrianSharp.Evade
 
         public const int SkillShotsExtraRange = 20;
 
-        #endregion
     }
 }
