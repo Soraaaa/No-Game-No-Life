@@ -1,16 +1,21 @@
-﻿namespace BrianSharp.Evade
-{
     using System;
     using System.Collections.Generic;
     using System.Linq;
 
     using BrianSharp.Common;
 
-    using LeagueSharp;
-    using LeagueSharp.Common;
+    using EloBuddy;
+    using EloBuddy.SDK;
+    using EloBuddy.SDK.Events;
+    using EloBuddy.SDK.Menu;
+    using EloBuddy.SDK.Menu.Values;
+    using EloBuddy.SDK.Rendering;
+    using EloBuddy.SDK.Enumerations;
 
     using SharpDX;
 
+namespace BrianSharp.Evade
+{
     public enum SkillShotType
     {
         SkillshotCircle,
