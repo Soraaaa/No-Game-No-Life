@@ -1,10 +1,14 @@
-﻿namespace BrianSharp.Evade
-{
     using BrianSharp.Common;
+    using EloBuddy;
+    using EloBuddy.SDK;
+    using EloBuddy.SDK.Events;
+    using EloBuddy.SDK.Menu;
+    using EloBuddy.SDK.Menu.Values;
+    using EloBuddy.SDK.Rendering;
+    using EloBuddy.SDK.Enumerations;
 
-    using LeagueSharp;
-    using LeagueSharp.Common;
-
+namespace BrianSharp.Evade
+{
     public enum CastTypes
     {
         Position,
