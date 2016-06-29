@@ -24,21 +24,11 @@
 
         public static Menu MainMenu;
 
-        public static Spell Q, Q2, W, W2, E, E2, R, R2;
-
         public static Items.Item Tiamat, Hydra, Youmuu, Zhonya, Seraph, Sheen, Iceborn, Trinity;
 
         #endregion
 
         #region Public Properties
-
-        public static Obj_AI_Hero Player
-        {
-            get
-            {
-                return ObjectManager.Player;
-            }
-        }
 
         #endregion
 
