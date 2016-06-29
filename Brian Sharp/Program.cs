@@ -24,7 +24,7 @@
 
         public static Menu MainMenu;
 
-        public static Items.Item Tiamat, Hydra, Youmuu, Zhonya, Seraph, Sheen, Iceborn, Trinity;
+        public static Item Tiamat, Hydra, Youmuu, Zhonya, Seraph, Sheen, Iceborn, Trinity;
 
         #endregion
 
