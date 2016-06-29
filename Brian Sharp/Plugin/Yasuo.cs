@@ -20,13 +20,8 @@ namespace BrianSharp.Plugin
 {
     internal class Yasuo : Helper
     {
-        #region Constants
 
         private const int QRange = 550, Q2Range = 1150, QCirWidth = 275, QCirWidthMin = 250, RWidth = 400;
-
-        #endregion
-
-        #region Constructors and Destructors
 
         public Yasuo()
         {
@@ -137,10 +132,6 @@ namespace BrianSharp.Plugin
             Interrupter.OnPossibleToInterrupt += OnPossibleToInterrupt;
         }
 
-        #endregion
-
-        #region Properties
-
         private static float GetQ2Delay
         {
             get
@@ -164,10 +155,6 @@ namespace BrianSharp.Plugin
                 return Player.HasBuff("YasuoQ3W");
             }
         }
-
-        #endregion
-
-        #region Methods
 
         private static void AutoQ()
         {
@@ -721,12 +708,7 @@ namespace BrianSharp.Plugin
             }
         }
 
-        #endregion
-
-        protected class EvadeSkillshot
         {
-            #region Public Methods and Operators
-
             public static void Init(Menu menu)
             {
                 var evadeMenu = new Menu("Evade Skillshot", "EvadeSkillshot");
@@ -775,10 +757,6 @@ namespace BrianSharp.Plugin
                 SkillshotDetector.OnDetectSkillshot += OnDetectSkillshot;
                 SkillshotDetector.OnDeleteMissile += OnDeleteMissile;
             }
-
-            #endregion
-
-            #region Methods
 
             private static IEnumerable<Obj_AI_Base> GetEvadeTargets(
                 EvadeSpellData spell,
@@ -1123,31 +1101,19 @@ namespace BrianSharp.Plugin
                 }
             }
 
-            #endregion
-
             internal struct IsSafeResult
             {
-                #region Fields
-
                 public bool IsSafe;
 
                 public List<Skillshot> SkillshotList;
-
-                #endregion
             }
         }
 
         protected class EvadeTarget
         {
-            #region Static Fields
-
             private static readonly List<Targets> DetectedTargets = new List<Targets>();
 
             private static readonly List<SpellData> Spells = new List<SpellData>();
-
-            #endregion
-
-            #region Properties
 
             private static GameObject Wall
             {
@@ -1159,10 +1125,6 @@ namespace BrianSharp.Plugin
                                 i => i.IsValid && Regex.IsMatch(i.Name, "_w_windwall.\\.troy", RegexOptions.IgnoreCase));
                 }
             }
-
-            #endregion
-
-            #region Public Methods and Operators
 
             public static void Init(Menu menu)
             {
@@ -1197,10 +1159,6 @@ namespace BrianSharp.Plugin
                 GameObject.OnDelete += ObjSpellMissileOnDelete;
                 Obj_AI_Base.OnProcessSpellCast += OnProcessSpellCast;
             }
-
-            #endregion
-
-            #region Methods
 
             private static void LoadSpellData()
             {
@@ -1448,21 +1406,13 @@ namespace BrianSharp.Plugin
                 }
             }
 
-            #endregion
-
             private class SpellData
             {
-                #region Fields
-
                 public string ChampionName;
 
                 public SpellSlot Slot;
 
                 public string[] SpellNames = { };
-
-                #endregion
-
-                #region Public Properties
 
                 public string MissileName
                 {
@@ -1472,16 +1422,10 @@ namespace BrianSharp.Plugin
                     }
                 }
 
-                #endregion
-            }
-
             private class Targets
             {
-                #region Fields
 
                 public MissileClient Obj;
-
-                #endregion
             }
         }
     }
