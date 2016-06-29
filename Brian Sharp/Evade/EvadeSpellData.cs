@@ -52,8 +52,6 @@ namespace BrianSharp.Evade
 
     internal class EvadeSpellData
     {
-        #region Fields
-
         public CastTypes CastType;
 
         public string CheckSpellName = "";
@@ -75,10 +73,6 @@ namespace BrianSharp.Evade
         public SpellTargets[] ValidTargets;
 
         private int dangerLevel;
-
-        #endregion
-
-        #region Public Properties
 
         public int DangerLevel
         {
@@ -111,7 +105,5 @@ namespace BrianSharp.Evade
                        && this.Slot.IsReady();
             }
         }
-
-        #endregion
     }
 }
