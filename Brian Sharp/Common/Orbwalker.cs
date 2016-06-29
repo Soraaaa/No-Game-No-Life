@@ -279,14 +279,6 @@ namespace BrianSharp.Common
             }
         }
 
-        private static Obj_AI_Hero Player
-        {
-            get
-            {
-                return ObjectManager.Player;
-            }
-        }
-
         private static bool ShouldWait
         {
             get
@@ -449,19 +441,6 @@ namespace BrianSharp.Common
             {
                 return;
             }
-            if (config.Item("OW_Combo_MeleeMagnet").IsActive() && CurrentMode == Mode.Combo && Player.IsMelee
-                && Player.AttackRange < 200 && InAutoAttackRange(target) && target.IsValid<Obj_AI_Hero>()
-                && ((Obj_AI_Hero)target).Distance(Game.CursorPos) < 300)
-            {
-                MovePrediction.Delay = Player.BasicAttack.SpellCastTime;
-                MovePrediction.Speed = Player.BasicAttack.MissileSpeed;
-                MoveTo(MovePrediction.GetPrediction((Obj_AI_Hero)target).UnitPosition);
-            }
-            else
-            {
-                MoveTo(Game.CursorPos);
-            }
-        }
 
         #endregion
 
