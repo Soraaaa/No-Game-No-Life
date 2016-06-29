@@ -1,17 +1,16 @@
-﻿namespace BrianSharp.Evade
-{
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text.RegularExpressions;
 
     using BrianSharp.Common;
-
-    using LeagueSharp;
-    using LeagueSharp.Common;
+    
+    using EloBuddy;
+    using EloBuddy.SDK;
 
     using SharpDX;
-
+namespace BrianSharp.Evade
+{
     public enum CollisionObjectTypes
     {
         Minion,
