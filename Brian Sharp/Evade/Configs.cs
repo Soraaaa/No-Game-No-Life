@@ -14,6 +14,6 @@ namespace BrianSharp.Evade
 
         public const int SkillShotsExtraRange = 20;
 
-        #endregion 
+        #endregion
     }
 }
