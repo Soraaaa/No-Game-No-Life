@@ -1,15 +1,17 @@
-﻿namespace BrianSharp.Common
+using System;
+using EloBuddy;
+using EloBuddy.SDK;
+using EloBuddy.SDK.Events;
+using EloBuddy.SDK.Menu;
+using EloBuddy.SDK.Menu.Values;
+using EloBuddy.SDK.Rendering;
+using System.Linq;
+using EloBuddy.SDK.Enumerations;
+using SharpDX;
+using Color = System.Drawing.Color;
+
+namespace BrianSharp.Common
 {
-    using System;
-    using System.Linq;
-
-    using LeagueSharp;
-    using LeagueSharp.Common;
-
-    using SharpDX;
-
-    using Color = System.Drawing.Color;
-
     internal class Orbwalker
     {
         #region Static Fields
